@@ -6,11 +6,11 @@ namespace EfCore
 {
     public class ProductNode : BaseEntity
     {
-        public ProductNode Parent { get; set; }
-        public ProductLevel Level { get; set; }
+        public virtual ProductNode Parent { get; set; }
+        public virtual  ProductLevel Level { get; set; }
 
-        public ICollection<ProductNode> Nodes { get; } 
-        public ICollection<BaseSection> Sections { get; }
+        public virtual ICollection<ProductNode> Nodes { get; } 
+        public virtual ICollection<BaseSection> Sections { get; }
 
         public ProductNode()
         {

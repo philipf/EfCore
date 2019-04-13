@@ -4,12 +4,12 @@ namespace EfCore
 {
     public class TermsSection : BaseSection
     {
-        public Rail Rail { get; set; }
+        public virtual Rail Rail { get; set; }
         public int MinTerms { get; set; }
         public int MaxTerms { get; set; }
 
-        public Address Postal { get; set; }
-        public Address Physical { get; set; }
+        public virtual Address Postal { get; set; }
+        public virtual Address Physical { get; set; }
 
         public TermsSection()
         {

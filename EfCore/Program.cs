@@ -24,7 +24,8 @@ namespace EfCore
 
                 var p2 = db.Set<ProductNode>()
                     .Where(o => o.Id == 2)
-                    .Include(o => (TermsSection) o.Sections)
+                    //.Include(o => (TermsSection) o.Sections)
+                    //.OfType<TermsSection>()
                     .Single();
 
                 //db.Entry(p2).Collection(e => e.Sections)

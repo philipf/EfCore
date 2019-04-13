@@ -4,7 +4,7 @@ namespace EfCore
 {
     public class RentalSection : BaseSection
     {
-        public Rail Rail { get; set; }
+        public virtual Rail Rail { get; set; }
         public bool InArrears { get; set; }	// simplified payment mode
         public int PaymentFrequency { get; set; }
 

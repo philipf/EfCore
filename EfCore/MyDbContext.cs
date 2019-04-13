@@ -13,6 +13,8 @@ namespace EfCore
 
             optionsBuilder.UseSqlServer(connectionString)
                 . EnableSensitiveDataLogging();
+
+            optionsBuilder.UseLazyLoadingProxies();
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
