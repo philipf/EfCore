@@ -1,5 +1,12 @@
-# EfCore
-Bootstrap for EfCore
+# EfCore - Immutable collections
+
+Use this when you want to  expose an immutable collection and want to force updates to it through the containing object's methods.
+
+`blog.AddPost(p);` :slightly_smiling_face:
+
+instead of
+
+`blog.Posts.Add(p)` :disappointed:
 
 ## Useful commands:
 Add database migrations from existing model:
