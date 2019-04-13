@@ -22,16 +22,14 @@ namespace EfCore
                 //        //.ThenInclude(p => p.Sections)
                 //    .Single(p => p.Id == 2);
 
-                var p2 = db.Set<ProductNode>()
-                    .Where(o => o.Id == 2)
-                    .Include(o => (TermsSection) o.Sections)
-                    .Single();
+                var p2 = db.ProductNodes.Single(o => o.Id == 2);
 
-                //db.Entry(p2).Collection(e => e.Sections)
-                //    .Query().OfType<BasicInfoSection>()
-                //    //.Include(e => e.OffshoreAccounts)
-                //    //.ThenInclude(e => e.AccountInfo)
-                //    .Load();
+                var basicSections = db.Entry(p2)
+                    .Collection(s => s.Sections)
+                    .Query()
+                    .OfType<BasicInfoSection>()
+                    //.Where(s => s is BasicInfoSection)
+                    .ToList();
 
 
                 Console.WriteLine(p2.Get<BasicInfoSection>().Code);

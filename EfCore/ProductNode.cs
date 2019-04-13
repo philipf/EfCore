@@ -1,16 +1,35 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 
 namespace EfCore
 {
     public class ProductNode : BaseEntity
     {
+        //private ILazyLoader _lazyLoader;
+
+        //public ProductNode Parent { get; set; }
+
+        //private ProductNode _parent;
+
+        //public ProductNode Parent 
+        //{
+        //    get => _lazyLoader.Load(this, ref _parent);
+        //    set => _parent = value;
+        //}
+
         public ProductNode Parent { get; set; }
+
         public ProductLevel Level { get; set; }
 
-        public ICollection<ProductNode> Nodes { get; } 
-        public ICollection<BaseSection> Sections { get; }
+        public ICollection<ProductNode> Nodes { get; set;  } 
+        public ICollection<BaseSection> Sections { get; set; }
+
+        //public ProductNode(ILazyLoader lazyLoader)
+        //{
+        //    _lazyLoader = lazyLoader;
+        //}
 
         public ProductNode()
         {
