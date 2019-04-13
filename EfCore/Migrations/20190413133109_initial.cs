@@ -66,6 +66,7 @@ namespace EfCore.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    OverrideRule = table.Column<int>(nullable: false),
                     UseParent = table.Column<bool>(nullable: false),
                     Discriminator = table.Column<string>(nullable: false),
                     ProductNodeId = table.Column<int>(nullable: true),

@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Internal;
-using Microsoft.EntityFrameworkCore.Query;
 
 namespace EfCore
 {
@@ -20,44 +18,11 @@ namespace EfCore
                 var p2 = db.ProductNodes
                     .Include(n => n.Level)
                     .Include(n => n.Sections)
-                //    //.Include(n => n.Parent)
-                //    .Include(n => n.Parent.Sections)
-                //    .Include(n => n.Parent.Parent.Sections)
-                //    .Include(n => n.Parent.Parent.Parent.Sections)
                     .Single(o => o.Id == 3);
-
-                //IQueryable<ProductNode> q = db.ProductNodes.AsQueryable();
-
-                //for (int i = 0; i < 3; i++)
-                //{
-                //    q = q.Include(n => n.Level);
-                //    q = q.Include(n => n.Sections);
-                //    q = q.Include(p => p.Parent.Sections);
-                //    q = q.Include(p => p.Parent.Level);
-                //    q = q.Include(p => p.Parent);
-
-
-                //    IIncludableQueryable<ProductNode, ProductNode> x = q.Include(p => p.Parent)
-                //        .ThenInclude(p => p.Parent);
-
-
-                //}
-
-
-                //var p2 = q.Single(p => p.Id == 3);
-
-
-
-                //var baseSections = db.Entry(p2)
-                //    .Collection(s => s.Sections)
-                //    .Query()
-                //    .Where(s => s is BasicInfoSection || s is TermsSection)
-                //    .ToList();
-
 
                 Console.WriteLine(p2.Get<BasicInfoSection>().Code);
                 Console.WriteLine(p2.Get<TermsSection>().MinTerms);
-
+                Console.WriteLine(p2.Get<TermsSection>(false).MinTerms);
 
                 Console.WriteLine("Done");
             }

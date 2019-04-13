@@ -28,6 +28,8 @@ namespace EfCore.Migrations
                     b.Property<string>("Discriminator")
                         .IsRequired();
 
+                    b.Property<int>("OverrideRule");
+
                     b.Property<int?>("ProductNodeId");
 
                     b.Property<bool>("UseParent");

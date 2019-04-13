@@ -4,8 +4,8 @@ namespace EfCore
 {
     public abstract class BaseSection : BaseEntity
     {
-        public OverrideRule OverrideRule { get; }
-        public bool UseParent { get; set; }
+        public OverrideRule OverrideRule { get; private set; }
+        public bool UseParent { get; private set; }
 
         protected BaseSection() { }  // EF Core requirement
 

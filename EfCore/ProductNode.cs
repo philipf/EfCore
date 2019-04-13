@@ -13,10 +13,10 @@ namespace EfCore
         public ProductNode Parent { get; private set; }
         public ProductLevel Level { get; private set;  }
 
-        private readonly ICollection<ProductNode> _nodes;
+        private ICollection<ProductNode> _nodes;
         public IEnumerable<ProductNode> Nodes => _nodes;
 
-        private readonly ICollection<BaseSection> _sections;
+        protected ICollection<BaseSection> _sections;
         public IEnumerable<BaseSection> Sections => _sections;
 
         public ProductNode(DbContext dbContext)
