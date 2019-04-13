@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.EntityFrameworkCore;
 
 namespace EfCore
 {
@@ -8,17 +9,39 @@ namespace EfCore
         {
             using (var db = new MyDbContext())
             {
-                db.Blogs.Add(new Blog { Url = "http://blogs.msdn.com/adonet" });
-                var count = db.SaveChanges();
-                Console.WriteLine("{0} records saved to database", count);
+                SaveToDb(db);
+            }
 
-                Console.WriteLine();
-                Console.WriteLine("All blogs in database:");
-                foreach (var blog in db.Blogs)
+            using (var db = new MyDbContext())
+            {
+                RetrieveFromDb(db);
+            }
+
+            Console.ReadLine();
+        }
+
+        private static void RetrieveFromDb(MyDbContext db)
+        {
+            foreach (var blog in db.Blogs.Include(b => b.Posts))
+            {
+                Console.WriteLine($" - {blog.Url}");
+                foreach (var post in blog.Posts)
                 {
-                    Console.WriteLine(" - {0}", blog.Url);
+                    Console.WriteLine($"     -> { post.Title}");
                 }
             }
+        }
+
+        private static void SaveToDb(MyDbContext db)
+        {
+            var blog = new Blog {Url = "http://blogs.msdn.com/adonet"};
+            db.Blogs.Add(blog);
+            blog.AddPost(new Post {Blog = blog, Title = "Sample content"});
+
+            var count = db.SaveChanges();
+            Console.WriteLine("{0} records saved to database", count);
+            Console.WriteLine();
+            Console.WriteLine("All blogs in database:");
         }
     }
 }
