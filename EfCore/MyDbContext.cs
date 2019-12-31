@@ -22,6 +22,9 @@ public class Blog
     public string Url { get; set; }
 
     public List<Post> Posts { get; set; }
+
+    public DateTime StartDate { get; set; }
+    public DateTime EndDate { get; set; }
 }
 
 public class Post
@@ -32,4 +35,8 @@ public class Post
 
     public int BlogId { get; set; }
     public Blog Blog { get; set; }
+
+
+    public DateTime StartDate { get; set; }
+    public DateTime EndDate { get; set; }
 }
